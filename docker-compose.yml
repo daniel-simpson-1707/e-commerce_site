@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    env_file:
+      - .env
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/usr/src/app
+    command: npm run dev
+
+  frontend:
+    build: ./frontend
+    env_file:
+      - frontend/.env.example
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/usr/src/app
+    command: npm run dev
